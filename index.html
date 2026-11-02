@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nefesimm'e Bir Sürprizim Var ❤️</title>
+<style>
+:root{
+  --wine:#7d183d;
+  --deep:#5a1733;
+  --rose:#f6a8c0;
+  --rose2:#ffd7e4;
+  --cream:#fff8f7;
+  --ink:#5e2840;
+  --white:#fffdfc;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Georgia,'Times New Roman',serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 20% 18%, #ffe4ed 0, transparent 28%),
+    radial-gradient(circle at 86% 8%, #ffd7e7 0, transparent 26%),
+    radial-gradient(circle at 82% 85%, #f6bfd1 0, transparent 30%),
+    linear-gradient(145deg,#fff9f7 0%,#ffeef4 48%,#f8d9e4 100%);
+  overflow-x:hidden;
+}
+.wrap{min-height:100vh;display:grid;place-items:center;padding:28px 16px;position:relative}
+.card{
+  width:min(760px,100%);
+  background:rgba(255,250,248,.92);
+  border:1px solid rgba(255,255,255,.95);
+  border-radius:34px;
+  box-shadow:0 24px 90px rgba(125,24,61,.16);
+  padding:clamp(26px,6vw,56px);
+  text-align:center;
+  position:relative;
+  z-index:2;
+  backdrop-filter:blur(6px);
+}
+.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:4px;text-transform:uppercase;color:#a64d6c}
+.heart{font-size:44px;display:block;margin:14px 0;animation:pulse 1.8s infinite}
+h1{font-size:clamp(36px,7vw,60px);line-height:1.03;margin:10px 0 12px;color:var(--wine);font-weight:500}
+.hero-text{font-size:19px;line-height:1.75;max-width:560px;margin:0 auto 14px}
+.sub{font:14px Arial,sans-serif;color:#9a6777}
+.divider{width:84px;height:1px;background:#ebbccd;margin:22px auto}
+.btn{
+  border:0;
+  border-radius:999px;
+  padding:15px 28px;
+  background:linear-gradient(135deg,#812146,#cb5b81);
+  color:white;
+  font:700 15px Arial,sans-serif;
+  box-shadow:0 14px 35px rgba(138,32,71,.22);
+  cursor:pointer;
+  margin:10px 6px;
+  transition:.25s ease;
+}
+.btn:hover{transform:translateY(-2px) scale(1.01);filter:brightness(1.05)}
+.btn.alt{
+  background:#fff;
+  color:var(--wine);
+  border:1px solid #ecc4d2;
+  box-shadow:none;
+}
+.hidden{display:none !important}
+.note{
+  background:linear-gradient(180deg,#fff4f7,#fffafb);
+  border:1px solid #f2ccd8;
+  border-radius:24px;
+  padding:24px;
+  margin:22px 0;
+  animation:appear .7s ease;
+  box-shadow:0 10px 30px rgba(125,24,61,.07);
+}
+.note strong{color:var(--wine);font-size:22px}
+.note p{font-size:18px;line-height:1.8;max-width:560px;margin:12px auto}
+.signature{font-size:24px;color:var(--wine);font-style:italic;margin-top:18px}
+.line-em{font-style:italic;color:#a23c61}
+.reveal-box{margin-top:6px}
+.memories{
+  margin-top:20px;
+  padding-top:10px;
+}
+.memory-intro{
+  background:rgba(255,244,248,.8);
+  border:1px solid #f0c7d4;
+  border-radius:22px;
+  padding:18px 18px 8px;
+  margin:18px 0 24px;
+}
+.memory-intro h2{font-size:clamp(27px,5vw,38px);margin:0 0 8px;color:var(--deep);font-weight:500}
+.memory-intro p{font-size:18px;line-height:1.8;max-width:560px;margin:0 auto 10px}
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  align-items:start;
+}
+.memory-card{
+  margin:0;
+  background:linear-gradient(180deg,#fffefc,#fff7fa);
+  border-radius:22px;
+  padding:10px 10px 15px;
+  box-shadow:0 14px 34px rgba(125,24,61,.15);
+  opacity:0;
+  transform:translateY(45px) scale(.94) rotate(-2deg);
+}
+.memory-card:nth-child(2){transform:translateY(45px) scale(.94) rotate(1.5deg)}
+.memory-card:nth-child(3){transform:translateY(45px) scale(.94) rotate(-1deg)}
+.memory-card.show{
+  animation:cardIn .95s cubic-bezier(.2,.85,.2,1) forwards;
+  animation-delay:var(--delay);
+}
+.memory-photo-wrap{
+  overflow:hidden;
+  border-radius:15px;
+}
+.memory-card img{
+  display:block;
+  width:100%;
+  height:290px;
+  object-fit:cover;
+  border-radius:15px;
+  transition:transform .6s ease;
+}
+.memory-card:hover img{transform:scale(1.03)}
+.memory-card figcaption{
+  font:14px Arial,sans-serif;
+  color:var(--wine);
+  padding:12px 4px 0;
+}
+.footer{font:12px Arial,sans-serif;color:#a56b7d;margin-top:26px}
+.floating{position:fixed;bottom:-30px;z-index:1;pointer-events:none;animation:floatUp linear forwards;opacity:.72}
+.spark{position:fixed;z-index:4;pointer-events:none;animation:burst 1.3s ease-out forwards}
+.glow{position:absolute;inset:auto -20% -30% auto;width:260px;height:260px;border-radius:999px;background:radial-gradient(circle, rgba(255,210,225,.45), transparent 60%);filter:blur(12px)}
+@keyframes pulse{50%{transform:scale(1.12)}}
+@keyframes floatUp{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes burst{to{transform:translate(var(--x),-130px) rotate(35deg) scale(.3);opacity:0}}
+@keyframes cardIn{
+  0%{opacity:0;transform:translateY(45px) scale(.94) rotate(-2deg)}
+  65%{opacity:1}
+  100%{opacity:1;transform:translateY(0) scale(1) rotate(0deg)}
+}
+@media(max-width:720px){
+  .gallery{grid-template-columns:1fr;max-width:420px;margin:auto}
+  .memory-card img{height:auto;max-height:440px;object-fit:contain}
+  .note p,.memory-intro p,.hero-text{font-size:17px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <main class="card">
+    <div class="glow"></div>
+    <div class="eyebrow">Kalbimin en güzel yerine</div>
+    <span class="heart">♥</span>
+    <h1>Nefesi'mm</h1>
+    <p class="sub">Bu küçük sürprizin içinde biraz kalp, biraz özlem ve sana ait kocaman duygular var</p>
+    <div class="divider"></div>
+    <p class="hero-text">
+      Hayatımın Anlamı… Bu sayfaya dokunduğun an, bil ki her cümlesi seni ne kadar sevdiğimi biraz daha hissettirsin diye hazırlandı.
+      Burada kelimeler sana, kalbim sana, bütün güzel hislerim yine sana ait.
+    </p>
+
+    <button class="btn" id="open">Kalbime dokun ❤️</button>
+
+    <section id="surprise" class="hidden">
+      <div class="note">
+        <strong>Hayatımın Anlamı…</strong>
+        <p>
+          Senin gülüşün bazen bütün günümün en güzel yeri oluyor.
+          Sesin içimi sakinleştiriyor, varlığın içimde tarifsiz bir huzur bırakıyor.
+          Sen yanımda olunca dünya biraz daha güzel, biraz daha yumuşak, biraz daha yaşanılır oluyor.
+        </p>
+        <p class="line-em">
+          İyi ki hayatımdasın Gülüm… İyi ki kalbim seni seçmiş.
+        </p>
+      </div>
+
+      <p id="extra" class="hero-text">Bir şey daha var… Bu butona basınca bizim en güzel anılarımız sana tek tek kendini gösterecek.</p>
+
+      <div class="reveal-box">
+        <button class="btn alt" id="showMemories">Anılarımıza dokun ✨</button>
+        <button class="btn alt hidden" id="more">Bir şey daha söyle ❤️</button>
+      </div>
+
+      <section class="memories hidden" id="memorySection">
+        <div class="memory-intro">
+          <h2>Bizden güzel anılar ❤️</h2>
+          <p>
+            Her fotoğraf, sana biraz daha bağlandığım bir an gibi…
+            Her karede gözlerimde yine aynı şey var:
+            <span class="line-em">sana duyduğum sevgi, özlem ve kocaman bir hayranlık.</span>
+          </p>
+        </div>
+
+        <div class="gallery" id="gallery">
+          
+      <figure class="memory-card" style="--delay:0.22s">
+        <div class="memory-photo-wrap">
+          <img src="img/fotograf_1.jpg" alt="Birlikte çekilmiş fotoğraf 1">
+        </div>
+        <figcaption>Birlikte güzel bir gece ❤️</figcaption>
+      </figure>
+    
+      <figure class="memory-card" style="--delay:0.44s">
+        <div class="memory-photo-wrap">
+          <img src="img/fotograf_2.jpg" alt="Birlikte çekilmiş fotoğraf 2">
+        </div>
+        <figcaption>Gülüşün hep aklımda</figcaption>
+      </figure>
+    
+      <figure class="memory-card" style="--delay:0.66s">
+        <div class="memory-photo-wrap">
+          <img src="img/fotograf_3.jpg" alt="Birlikte çekilmiş fotoğraf 3">
+        </div>
+        <figcaption>En sevdiğim anlardan biri</figcaption>
+      </figure>
+    
+        </div>
+      </section>
+
+      <div id="last" class="note hidden">
+        <strong>Nefesimm,</strong>
+        <p>
+          Belki her şeyi kelimelerle anlatmak zor…
+          Ama şunu çok net biliyorum:
+          seni mutlu görmek içime iyi geliyor, seninle ilgili en küçük şey bile kalbimde kocaman bir yer kaplıyor.
+        </p>
+        <p>
+          Sen bazen bir gülüş, bazen huzur, bazen de kalbimin en güzel sebebisin.
+          Ben seni sadece sevmiyorum… Sana her geçen gün biraz daha bağlanıyorum.
+        </p>
+        <div class="signature">Seni çok seven biri ❤️</div>
+      </div>
+    </section>
+
+    <div class="footer">Biraz sevgi, biraz özlem, biraz da sana ait güzel hisler… Hepsi senin için.</div>
+  </main>
+</div>
+
+<script>
+const openBtn = document.getElementById('open');
+const surprise = document.getElementById('surprise');
+const memoriesBtn = document.getElementById('showMemories');
+const more = document.getElementById('more');
+const last = document.getElementById('last');
+const extra = document.getElementById('extra');
+const memorySection = document.getElementById('memorySection');
+const cards = [...document.querySelectorAll('.memory-card')];
+
+function burst(count=24){
+  const symbols=['♥','♡','✦','💗','💞'];
+  const colors=['#b52c5b','#e77d9f','#9c3158','#ef9bb4'];
+  for(let i=0;i<count;i++) {
+    const s=document.createElement('span');
+    s.className='spark';
+    s.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    s.style.left=(innerWidth/2+(Math.random()-.5)*220)+'px';
+    s.style.top=(innerHeight/2+(Math.random()-.5)*100)+'px';
+    s.style.fontSize=(16+Math.random()*24)+'px';
+    s.style.color=colors[i%colors.length];
+    s.style.setProperty('--x',((Math.random()-.5)*360)+'px');
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),1400);
+  }
+}
+
+function floatHeart(){
+  const h=document.createElement('div');
+  h.className='floating';
+  h.textContent=['♥','♡','✧','💗'][Math.floor(Math.random()*4)];
+  h.style.left=Math.random()*100+'vw';
+  h.style.fontSize=(14+Math.random()*24)+'px';
+  h.style.color=['#d76d8e','#a83b60','#ef9bb4','#cc5c83'][Math.floor(Math.random()*4)];
+  h.style.animationDuration=(7+Math.random()*7)+'s';
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),15000);
+}
+setInterval(floatHeart,850);
+
+openBtn.addEventListener('click',()=>{
+  surprise.classList.remove('hidden');
+  openBtn.classList.add('hidden');
+  burst(30);
+});
+
+memoriesBtn.addEventListener('click',()=>{
+  memorySection.classList.remove('hidden');
+  memoriesBtn.classList.add('hidden');
+  more.classList.remove('hidden');
+  extra.textContent='Bu karelerin her birinde sana olan sevgim biraz daha görünsün istedim…';
+  setTimeout(() => {
+    cards.forEach(card => card.classList.add('show'));
+  }, 80);
+  burst(34);
+});
+
+more.addEventListener('click',()=>{
+  last.classList.remove('hidden');
+  more.classList.add('hidden');
+  burst(26);
+});
+</script>
+</body>
+</html>
